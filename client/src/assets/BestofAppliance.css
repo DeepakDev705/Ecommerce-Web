@@ -1,0 +1,152 @@
+/* Mobile container styling */
+.appliances-container {
+    margin: -70px auto;
+    padding: 20px;
+    width: 97%;
+    background-color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+  }
+  
+  /* Title styling */
+  .appliances-container h3 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Grid layout for mobiles */
+  .appliances-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px;
+    scroll-behavior: smooth;
+  }
+  
+  .appliances-grid::-webkit-scrollbar {
+    height: 10px;
+  }
+  
+  .appliances-grid::-webkit-scrollbar-thumb {
+    background-color: #d9534f;
+    border-radius: 5px;
+  }
+  
+  .appliances-grid::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+  }
+  
+  /* Individual mobile card styling */
+  .appliances-card {
+    flex: 0 0 auto;
+    width: 220px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: left;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    position: relative; /* Positioning for the wishlist icon */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .appliances-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Mobile image styling */
+  .appliances-image {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    background-color: #f8f8f8;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  /* Mobile details section */
+  .appliances-details {
+    margin-top: 10px;
+  }
+  
+  .appliances-details h4 {
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+  }
+  
+  .appliances-details p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    color: #555;
+  }
+  
+  .appliances-details del {
+    color: #999;
+    font-size: medium;
+    margin-top: 2px;
+    margin-right: 30px;
+  }
+  
+  .appliances-details strong {
+    font-size: 1.2rem;
+    color: black;
+    font-weight: bold;
+  }
+  
+  
+  /* Wishlist Icon Styling */
+  .wishlist-ico {
+   position: absolute;
+    top: 8px;
+    right: 10px;
+    color: #aeacac;  
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 5px; /* Space around the icon */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  }
+  
+  .wishlist-ico:hover {
+    color: #ff4d4d; /* Change color to red on hover */
+  }
+  
+  @media (max-width: 768px){
+    .appliances-container{
+      margin-top: 32%;
+    }
+  }
+  /* Adjust grid layout for smaller screens */
+@media (max-width: 768px) {
+    .appliances-container {
+        margin-top: 20px; /* Adjust margin for smaller screens */
+    }
+    
+    .appliances-grid {
+        flex-wrap: wrap;  /* Allow wrapping for mobile screens */
+        gap: 10px;        /* Adjust gap for better spacing */
+    }
+
+    .appliances-card {
+        width: 100%;       /* Allow cards to take full width on mobile */
+    }
+
+    .btns-primary {
+        padding: 12px 16px; /* Increase button size for better touchability */
+        font-size: 16px;
+    }
+
+    .appliances-image {
+        height: 180px;  /* Adjust image size for better aspect ratio */
+    }
+}

@@ -1,0 +1,166 @@
+/* Cart Page Container */
+.cart-page {
+  margin-top: 120px;
+  background-color: #f4f7fa; /* Light gray-blue background for subtle contrast */
+  border-radius: 12px; /* Softer rounded corners */
+  padding: 30px; /* More padding for comfortable spacing */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+/* Product Card Styling */
+.card {
+  background-color: #ffffff; /* White background for the cards */
+  border: none; /* Remove border */
+  border-radius: 10px; /* Rounded corners for a softer look */
+  overflow: hidden; /* Prevent overflow of card contents */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth scaling and shadow */
+}
+
+.card:hover {
+  transform: scale(1.03); /* Slightly enlarge the card on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Increase shadow on hover */
+}
+
+/* Card Content */
+.card-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+}
+
+.card-text {
+  margin: 0;
+  color: #666; /* Lighter text color for product details */
+}
+
+.text-decoration-line-through {
+  color: #e74c3c; /* Red color for the original price (strikethrough) */
+  margin-left: 10px;
+}
+
+/* Image Styling */
+.img-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 160px; /* Slightly larger image container */
+  height: 160px;
+}
+
+.img-wrapper img {
+  max-width: 100%; /* Ensure the image fits the container */
+  max-height: 100%;
+  object-fit: cover; /* Maintain aspect ratio and crop excess */
+  border-radius: 10px; /* Rounded corners for images */
+  cursor: pointer;
+}
+
+/* Quantity Control */
+.quantity-control {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.quantity-control button {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  font-size: 18px;
+  background-color: #007bff; /* Blue background for quantity buttons */
+  color: white;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.quantity-control button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.quantity-control span {
+  font-size: 18px;
+  margin: 0 15px;
+  font-weight: bold;
+  color: #333; /* Darker color for quantity number */
+}
+
+/* Button Styling */
+.btn-outline-secondary {
+  color: #333;
+  border: 1px solid #ccc;
+  background-color: transparent;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #f0f0f0;
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.btn-danger {
+  font-size: 14px;
+  padding: 6px 15px;
+  border-radius: 6px;
+  background-color: #e74c3c; /* Bright red for danger button */
+  border: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Cart Summary */
+.cart-summary {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: right;
+}
+
+.cart-summary h4 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.btn-success {
+  font-size: 18px;
+  padding: 10px 25px;
+  background-color: #28a745; /* Green for success button */
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-success:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Empty Cart Message */
+.cart-empty {
+  margin-top: 80px;
+  font-size: 20px;
+  text-align: center;
+  color: #555; /* Gray for the empty cart message */
+}
+
+.cart-empty a {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.cart-empty a:hover {
+  text-decoration: underline;
+}
+.trash-icon{
+  margin-right: 10px;
+}

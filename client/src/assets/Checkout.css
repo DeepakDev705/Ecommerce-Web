@@ -1,0 +1,237 @@
+/* General Layout */
+.checkout-container {
+  margin-top: 100px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Title Styling */
+.checkout-title {
+  margin-top: -10px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 30px;
+}
+
+/* Card Styling */
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradient Headers */
+.bg-primary-gradient {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+}
+
+.bg-success-gradient {
+  background: linear-gradient(45deg, #28a745, #1e7e34);
+}
+
+.bg-info-gradient {
+  background: linear-gradient(45deg, #17a2b8, #117a8b);
+}
+
+/* Flex Layout for Side-by-Side Sections */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-6 {
+  flex: 1;
+  min-width: 50%;
+  padding: 10px;
+}
+
+.product-im {
+  width: 150px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+.product-price{
+  margin-top: -30px;
+}
+.quantity-section{
+  margin-top: -20px;
+}
+
+
+/* Buttons */
+.pay-now-btn {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pay-now-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+/* Quantity Input */
+.quantity-input {
+  max-width: 80px;
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 0 auto;
+}
+
+.product-detail{
+  width: 99.5%;
+  margin-left: 3px;
+  margin-top: 10px;
+  height: auto;
+}
+.card-headers{
+  width: 110%;
+  height: 48px;
+  margin-top: -14px;
+  margin-left: -16px;
+}
+.card-headers h5{
+  margin-top: 10px;
+  margin-left: 16px;
+}
+.cards-body{
+  background-color: #f8fbfd;
+}
+hr {
+  border: 0;
+  height: 7px; /* Sets the thickness of the line */
+  background-color: #2844a7; /* Green color */
+  margin: 20px 0; /* Adds spacing above and below the line */
+  opacity: 0.7; /* Makes the line slightly transparent */
+}
+
+.savings{
+  display: flex;
+  justify-content: end;
+  margin-top: -75px;
+}
+
+/* Quantity Section Styling */
+.quantity-section {
+  display: flex;
+  flex-direction: column; /* Stack label and controls vertically */
+  align-items: flex-start;
+  gap: 10px; /* Adds spacing between label and controls */
+  margin-top: 10px; /* Adds top margin for better spacing */
+}
+
+/* Quantity Input Styling */
+.quantity-input {
+  text-align: center;
+  width: 70px; /* Slightly wider for better readability */
+  font-size: 1.1rem; /* Increased font size for better visibility */
+  font-weight: bold;
+  border: 2px solid #6c757d; /* Enhances input box visibility */
+  border-radius: 10px; /* Adds smoother corners */
+  padding: 6px; /* Adds inner spacing for comfort */
+  transition: box-shadow 0.3s ease, border-color 0.3s ease; /* Subtle focus effect */
+}
+
+.quantity-input:focus {
+  box-shadow: 0 0 8px rgba(16, 72, 225, 0.6); /* Glow effect on focus */
+  outline: none; /* Removes default focus outline */
+  border-color: #1048e1; /* Changes border color on focus */
+}
+
+/* Button Styling */
+.btns {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Fully rounded buttons */
+  font-size: 1.5rem; /* Slightly larger for better usability */
+  width: 45px; /* Increased size for touch-friendly design */
+  height: 45px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer; /* Adds pointer cursor on hover */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Secondary Button Outline */
+.btns-outline-secondary {
+  border: 2px solid #6c757d;
+  color: white;
+  background-color: #007bff;
+}
+
+.btns-outline-secondary:hover {
+  background-color: #0056b3; /* Modern blue hover effect */
+  color: white;
+  box-shadow: 0 4px 10px rgba(16, 72, 225, 0.4); /* Stronger glow on hover */
+}
+
+.btns-outline-secondary:active {
+  transform: scale(0.92); /* Adds a dynamic click feedback */
+  box-shadow: 0 2px 5px rgba(16, 72, 225, 0.3); /* Reduces shadow on click */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quantity-section {
+    align-items: center; /* Center elements on smaller screens */
+  }
+
+  .quantity-controls {
+    flex-direction: column; /* Stack buttons vertically for smaller screens */
+    gap: 8px; /* Add spacing between buttons */
+  }
+
+  .quantity-input {
+    width: 100%; /* Make input responsive */
+  }
+
+  .btns {
+    width: 40px; /* Slightly smaller buttons for smaller screens */
+    height: 40px;
+    font-size: 1.3rem; /* Adjust font size */
+  }
+}
+
+/* Enhanced Button Hover Effects */
+.btns-outline-secondary:hover,
+.quantity-input:focus {
+  transition: all 0.3s ease; /* Ensures smooth transitions */
+}
+
+.btns-outline-secondary:hover {
+  transform: translateY(-2px); /* Subtle hover lift effect */
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #007bff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 100px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,81 @@
+
+
+/* Container for the slider */
+.slider-container {
+    position: relative;
+    top: 110px;
+    left: 28px;
+    width: 96%;
+    height: 600px;
+    max-width: 97.4%;
+    overflow: hidden;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Style for each slide (hidden by default) */
+  .slide {
+    display: none;
+  }
+  
+  /* Active slide (visible) */
+  .slide.active {
+    display: block;
+  }
+  
+  /* Image inside each slide */
+  .slide-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    object-fit: cover;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  /* Previous & Next buttons */
+  .prev,
+  .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    color: black;
+    font-size: 24px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10%;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+  }
+  
+  /* For small screens */
+  @media only screen and (max-width: 600px) {
+    .slider-container{
+      height: 400px;
+    }
+    .slide-image{
+      height: 400px;
+    }
+    .prev,
+    .next {
+      font-size: 18px;
+      padding: 8px;
+    }
+  }
+  
+  
+  
+  

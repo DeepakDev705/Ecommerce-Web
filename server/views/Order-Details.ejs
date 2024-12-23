@@ -1,0 +1,171 @@
+<%- include('components/navbar') %>
+<%- include('components/sidebar') %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <style>
+        body.order-details-page {
+            font-family: "Roboto", sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .header {
+        background-color: #e1e8e6;
+        height: 90px; /* Set the height of the div */
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        border-radius: 5px;
+      }
+
+      .header h2 {
+        color: #121212;
+        font-size: 2rem;
+        margin-left: 20px;
+      }
+      .header button[type="submit"] {
+        padding: 12px 20px; /* Adjust padding for a better button size */
+        font-size: 1rem;
+        margin-left: 59%;
+        background-color: rgb(34, 24, 24); /* Darker color for the button */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .header button[type="submit"]:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+      }
+        .order-details-container {
+            background-color: #fff;
+            padding: 30px;
+            margin-top: 120px;
+            margin-bottom: 50px;
+            margin-left: 300px;
+            width: 70%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .order-details-title {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .order-details-info {
+            margin-bottom: 20px;
+           
+        }
+        .order-details-info span {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        .order-products-list {
+            list-style: none;
+            padding: 0;
+        }
+        .order-products-list li {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .order-product-image {
+            width: 50px;
+            height: auto;
+            object-fit: cover;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+        .order-product-details h4 {
+            margin: 0;
+            font-size: 1rem;
+            color: #333;
+        }
+        .order-product-details p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .order-details-info select {
+          padding: 5px 10px;
+          border-radius: 5px;
+          font-size: 1rem;
+          cursor: pointer;
+          border: 1px solid #ccc;
+          transition: border-color 0.3s ease;
+        }
+
+        .order-details-info select:hover {
+          border-color: #007bff;
+       }
+
+    </style>
+</head>
+<body class="order-details-page">
+    <div class="order-details-container">
+        <div class="header">
+            <h2>Order Details</h2>
+            <button type="submit" onclick="window.location.href='/admin/Order-Management'" >Back</button>
+          </div>
+
+        <h2 class="order-details-title"></h2>
+        <div class="order-details-info">
+            <span><strong>Order ID:</strong> <%= order.orderId %></span>
+            <span><strong>User Name:</strong> <%= order.userId.name %></span>
+            <span><strong>User Email:</strong> <%= order.userId.email %></span>
+            <span><strong>Contact No:</strong> <%= order.userId.mobile %></span>
+            <span><strong>Order Date:</strong> <%= order.createdAt.toLocaleDateString('en-US') %></span>
+            <span><strong>Payment Status:</strong> <%= order.status %></span>
+            <span><strong>Total Amount:</strong> ₹<%= order.amount %></span>
+
+                <!-- Delivery Status Section -->
+    <span><strong>Delivery Status:</strong></span>
+    <form action="/admin/update-delivery-status" method="POST" >
+        <input type="hidden" name="orderId" value="<%= order._id %>">
+        <select name="deliveryStatus" id="deliveryStatus" onchange="this.form.submit()">
+            <option value="Complete your Payment" <%= order.deliveryStatus === 'Complete your Payment' ? 'selected' : '' %>>Complete your Payment</option>
+            <option value="Order is Processing" <%= order.deliveryStatus === 'Order is Processing' ? 'selected' : '' %>>Order is Processing</option>
+            <option value="Shipping Nearest You" <%= order.deliveryStatus === 'Shipping Nearest You' ? 'selected' : '' %>>Shipping Nearest You</option>
+            <option value="Your Order is Shipped" <%= order.deliveryStatus === 'Your Order is Shipped' ? 'selected' : '' %>>Your Order is Shipped</option>
+            <option value="Out For Delevery" <%= order.deliveryStatus === 'Out For Delevery' ? 'selected' : '' %>>Out For Delevery</option>
+            <option value="Successfully Delivered" <%= order.deliveryStatus === 'Successfully Delivered' ? 'selected' : '' %>>Successfully Delivered</option>
+            <option value="Order Cancelled" <%= order.deliveryStatus === 'Order Cancelled' ? 'selected' : '' %>>Order Cancelled</option>
+        </select>
+    </form>
+
+        </div>
+        <h3>Product</h3>
+        <ul class="order-products-list">
+            <% order.productIds.forEach((product) => { %>
+                <li>
+                    <img class="order-product-image" src="/uploads/<%= product.productimages[0] %>" alt="Product Image">
+                    <div class="order-product-details">
+                        <h4><%= product.productname %></h4>
+                        <% if (product.productimages && product.productimages.length > 0) { %>
+                        <% } else { %>
+                            <p>No images available</p>
+                        <% } %>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+
+/*    todo category   */
+
+.Navbar-container {
+    position: relative;
+    top: 70px;
+    left: 0px;
+    background-color: rgb(228, 222, 222);
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping of items */
+    justify-content: space-between; /* Center the items */
+    gap: 10px; /* Add 10px gap between items */
+    padding: 10px;
+    margin-top: 10px;
+    width: 96%;
+    height: 50px; /* Set container height to 100px */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a shadow for better user interaction */
+    /* overflow: hidden; Prevent overflow of items */
+  }
+  
+  .Navbar-item {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    text-align: center;/* Change cursor to indicate it's clickable */
+    max-width: 20%; /* Ensure each item takes up to 20% of the container width */
+  }
+  
+  .Navbar-item h5 {
+    margin-top: 2px;
+    font-size: 17px;
+    text-align: center;
+    font-weight: bold;
+    color: #0b0b0b;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+  }
+  
+  .Navbar-item:hover h5 {
+    color: rgb(17, 17, 248); /* Change category name color to blue on hover */
+  }
+  
+  .Navbardropdown-icon {
+    font-size: 20px;
+    transition: transform 0.3s ease; /* Add smooth transition */
+  }
+  
+  .Navbar-item:hover .Navbardropdown-icon {
+    transform: rotate(180deg); /* Rotate icon when hovering over category item */
+  }
+  /* Main Dropdown Container */
+  .Navbardropdown-subcategory {
+    position: absolute;
+    top: 100%; /* This moves the dropdown below the category container */
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* Ensures the dropdown appears above other content */
+    padding: 10px;
+    min-width: 140px;
+  }
+  
+  /* Show dropdown on hover */
+  .Navbar-item:hover .Navbardropdown-subcategory {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  
+  /* Subcategory List Styling */
+  .Navbardropdown-subcategory ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .Navbardropdown-subcategory ul li {
+    display: block;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    color: black;
+    margin-left: 0px;
+    padding: 8px 0;
+    cursor: pointer;
+  } 
+  
+  /* No Subcategories Available Message */
+  .no-subcategories {
+    padding: 8px;
+    color: #888;
+    font-style: italic;
+    text-align: center;
+  }
+  
+  
+/* Responsive Styles */
+@media (max-width: 768px) { /* Change 768px to your breakpoint */
+  .Navbar-item {
+      display: none; /* Hide all items by default */
+  }
+
+  .Navbar-item:nth-child(-n+4) {
+      display: inline-block; /* Show first 4 items */
+  }
+}
+
+@media (min-width: 769px) {
+  .Navbar-item {
+      display: inline-block; /* Show all items when screen expands */
+  }
+}
+  

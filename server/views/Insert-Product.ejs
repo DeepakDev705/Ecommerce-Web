@@ -1,0 +1,266 @@
+<%- include('components/navbar') %> <%- include('components/sidebar')%>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin panel</title>
+    
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #f7f9fc;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column; /* Use column direction */
+        align-items: center;
+        min-height: 100vh; /* Ensure the body takes up the full height */
+      }
+
+      .container {
+        background-color: #fff;
+        width: 70%;
+        margin-left: 22%;
+        margin-top: 8%;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px; /* Space between form and table */
+      }
+
+      .header {
+        background-color: #e1e8e6;
+        height: 90px; /* Set the height of the div */
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        border-radius: 5px;
+      }
+
+      .header h2 {
+        color: #121212;
+        font-size: 2rem;
+        margin-left: 20px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      label {
+        font-size: 1rem;
+        color: #0a0909;
+        margin-bottom: 5px;
+      }
+
+      select,input[type="number"],
+      input[type="text"] {
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        transition: border 0.3s ease;
+      }
+
+      select:focus,input[type="number"]:focus,
+      input[type="text"]:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+
+      button[type="submit"] {
+        padding: 12px;
+        font-size: 1rem;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      p {
+        color: #2f9e10;
+        text-align: left;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 1024px) {
+        .container,
+        .table-container {
+          width: 80%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          width: 90%;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        button[type="submit"] {
+          font-size: 1rem;
+          padding: 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          width: 100%;
+        }
+
+        h2 {
+          font-size: 1.3rem;
+        }
+
+        input[type="text"],
+        button[type="submit"] {
+          font-size: 0.9rem;
+          padding: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Insert Product</h2>
+      </div>
+
+      <% if (typeof message !== 'undefined') { %>
+      <p><%= message %></p>
+      <% } %>
+
+      <form action="/admin/Insert-Product" method="post" enctype="multipart/form-data">
+        <label for="category" >Choose Category</label>
+        <select id="category" name="category" required>
+          <option value=""disabled selected>Choose a category</option>
+          <!-- Categories will be dynamically loaded -->
+        </select>
+
+        <label for="Subcategory" >Choose Subcategory</label>
+        <select id="subcategory" name="subcategory" required>
+          <option value=""disabled selected>Choose a Subcategory</option>
+          <!-- Subcategories will be dynamically loaded -->
+        </select>
+
+        <label for="productname">Product Name</label>
+        <input  type="text" name="productname" id="productname" placeholder="Enter Product name" required />
+
+        <label for="productcompany">Product Company</label>
+        <input  type="text" name="productcompany" id="productcompany" placeholder="Enter Product Company" required />
+
+        <label for="productbeforediscount">Product Price Before Discount</label>
+        <input  type="number" name="productbeforediscount" id="productbeforediscount" placeholder="Enter Product Price" required />
+
+        <label for="productafterdiscount">Product Price After Discount(Selling) </label>
+        <input  type="number" name="productafterdiscount" id="productafterdiscount"  placeholder="Enter Product Price" required />
+         
+        <label for="productHighlight">Product Highlight </label>
+        <textarea name="productHighlight" id="productHighlight" placeholder="Enter Product Highlight" style="height: 200px;" required>
+        </textarea>
+
+        <label for="productDiscription">Product Description </label>
+        <textarea name="productDiscription" id="productDiscription" placeholder="Enter Product Description" style="height: 200px;" required>
+        </textarea>
+
+        <label for="productshippingcharge">Product Shipping Charge</label>
+        <input  type="number" name="productshippingcharge" id="productshippingcharge" placeholder="Enter Product Shipping Charge" required>
+         
+        <label for="productavailbility">Product Availbility</label>
+        <select id="productavailbility" name="productavailbility" required>
+          <option value="" disabled selected>Select Availability</option>
+          <option value="in-stock">In Stock</option>
+          <option value="out-of-stock">Out of Stock</option>      
+        </select>
+
+        <label for="productimage1" style="display: inline-block; margin-right: 10px;">Product Image 1</label>
+         <input type="file" name="productimage1" id="productimage1" required style="display: inline-block; margin-left: 150px; margin-top: -40px;  margin-bottom: 10px;" />
+
+         <label for="productimage2" style="display: inline-block; margin-right: 10px;">Product Image 2</label>
+         <input type="file" name="productimage2" id="productimage2" required style="display: inline-block; margin-left: 150px; margin-top: -40px;  margin-bottom: 10px;" />
+
+         <label for="productimage3" style="display: inline-block; margin-right: 10px;">Product Image 3</label>
+         <input type="file" name="productimage3" id="productimage3" required style="display: inline-block; margin-left: 150px; margin-top: -40px;  margin-bottom: 10px;" />
+
+         <label for="productimage4" style="display: inline-block; margin-right: 10px;">Product Image 4</label>
+         <input type="file" name="productimage4" id="productimage4" required style="display: inline-block; margin-left: 150px; margin-top: -40px;  margin-bottom: 10px;" />
+
+         <label for="productimage5" style="display: inline-block; margin-right: 10px;">Product Image 5</label>
+         <input type="file" name="productimage5" id="productimage5" required style="display: inline-block; margin-left: 150px; margin-top: -40px;  margin-bottom: 10px;" />
+
+         <label for="productimage6" style="display: inline-block; margin-right: 10px;">Product Image 6</label>
+         <input type="file" name="productimage6" id="productimage6" required style="display: inline-block; margin-left: 150px; margin-top: -40px;  margin-bottom: 10px;" />
+
+
+
+        <button type="submit">Insert Product</button>
+      </form>
+    </div>
+
+    <script>
+      // Fetch the categories from the API when the page loads
+      document.addEventListener("DOMContentLoaded", async () => {
+        try {
+          const response = await fetch("/categories");
+          const result = await response.json();
+
+          if (result.success) {
+            const categorySelect = document.getElementById("category");
+
+            // Iterate through the categories and create <option> elements
+            result.data.forEach((category) => {
+              const option = document.createElement("option");
+              option.value = category._id; // Assuming _id is the identifier
+              option.textContent = category.name;
+              categorySelect.appendChild(option);
+            });
+          } else {
+            console.error("Failed to fetch categories:", result.message);
+          }
+        } catch (error) {
+          console.error("Error fetching categories:", error);
+        }
+      });
+
+      // Fetch subcategories from the API when the page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/subcategories")
+          .then((response) => response.json())
+          .then((data) => {
+            const subcategorySelect = document.getElementById("subcategory");
+
+            data.forEach((subcategory) => {
+              const option = document.createElement("option");
+              option.value = subcategory._id; // Use subcategory ID as the value
+              option.textContent = subcategory.name; // Display subcategory name
+              subcategorySelect.appendChild(option);
+            });
+          })
+          .catch((error) =>
+            console.error("Error fetching subcategories:", error)
+          );
+      });
+    </script>
+  </body>
+</html>
+
+
+
+

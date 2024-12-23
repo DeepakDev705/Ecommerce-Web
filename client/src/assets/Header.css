@@ -1,0 +1,224 @@
+/* todo Navbar styles */
+
+.navbar {
+  display: flex;
+  height: 70px;
+  font-weight: bold;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(7, 222, 255);
+  padding: 10px 20px;
+  color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: large;
+}
+
+.navbar-title {
+  font-size: 30px;
+  margin-left: 60px;
+  color: #333;
+}
+
+.search-container {
+  position: relative;
+  flex: 1;
+  margin: 0px 20px;
+  margin-left: 40px;
+}
+
+.search-input {
+  width: 94%;
+  padding: 7px 40px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 20px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle glow effect */
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9e9999;
+  font-size: 20px;
+}
+
+.user-options {
+  display: flex;
+  align-items: center;
+  margin-right: 160px;
+  font-family: sans-serif;
+}
+
+.login-dropdown {
+  position: relative;
+  margin-right: 40px;
+  padding: 10px;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Show dropdown when hovering over login-dropdown */
+.login-dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Rotate the icon when the dropdown is shown */
+.login-dropdown:hover .dropdown-icon {
+  transform: rotate(180deg); /* Rotate icon by 180 degrees */
+}
+
+.dropdown-icon {
+  font-size: 30px;
+  margin-left: 0px;
+  vertical-align: middle;
+  transition: transform 0.3s ease; /* Smooth rotation */
+}
+.login-dropdown:hover {
+  background-color: #0762c4;
+  color: white;
+  border-radius: 5px;
+}
+
+.icon {
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+/* Dropdown Content for Login */
+.dropdown-content {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 45px;
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  min-width: 220px;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dropdown-content.show {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.horizontal-links .dropdown-content a .dropdown-icon-item {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f8f8f8;
+}
+
+.dropdown-content a.active {
+  background-color: #e8f0fe;
+  color: #0762c4;
+}
+
+
+/* Horizontal Links for Login and Signup */
+.horizontal-links {
+  display: flex;
+  padding: 5px;
+  font-size: medium;
+  justify-content: space-between;
+  background-color: #f1f1f1;
+}
+
+.horizontal-links a {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.horizontal-links a:hover {
+  background-color: #e8f0fe;
+  color: #1179e9;
+}
+.logout{
+  cursor: pointer;
+}
+
+.cart-icon {
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon a {
+  margin-left: 8px;
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+}
+.navbar .nav-login {
+  color: black;
+}
+.navbar .nav-login:hover{
+  color: #007bff; /* Optional: Change color on hover */
+}
+/* Navbar CSS to change text color to dark black */
+.navbar .navbar-nav .nav-cart {
+  color: black; /* Set text color to black */
+}
+
+.navbar .navbar-nav .nav-cart:hover {
+  color: #007bff; /* Optional: Change color on hover */
+}
+.navbar .navbar-brand {
+  font-size: 24px;
+  color: black;  /* Set the brand text color to black */
+}
+
+.navbar .navbar-brand:hover {
+  color: #1179e9; /* Optional: Change brand color on hover */
+}
+.cart-product{
+  position: absolute;
+  cursor: pointer;
+  width: 17px;
+  height: 24px;
+  margin-left: 15px;
+  margin-bottom: -5px;
+  font-size: medium;
+  background-color: rgb(249, 205, 45);
+  text-align: center;
+  border-radius: 50%;
+  
+}
+

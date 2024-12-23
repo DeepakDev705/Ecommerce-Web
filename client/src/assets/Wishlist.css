@@ -1,0 +1,80 @@
+.custom-wishlist-pages {
+    margin-top: 120px;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    overflow: hidden;
+  }
+
+  .custom-wishlist-product-name{
+    width: 800px;
+  }
+  .custom-wishlist-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #343a40;
+  }
+  
+  .custom-wishlist-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .custom-wishlist-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .custom-wishlist-image {
+    width: 80px;
+    height: auto;
+    margin-right: 1rem;
+  }
+  
+  
+  .custom-wishlist-product-price {
+    font-size: 1rem;
+    color: #28a745; /* Green for discounted price */
+  }
+  .custom-wishlist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom-wishlist-list {
+  margin-top: 20px;
+}
+
+.custom-remove-wishlist-btn {
+    margin-top: -70px;
+    margin-left: 30px;
+    background: transparent; /* Makes the button background transparent */
+    border: none; /* Removes the default border */
+    cursor: pointer; /* Changes the cursor to pointer for better UX */
+    padding: 0; /* Removes any padding */
+  }
+  
+  .custom-trash-icon {
+    color: #dc3545; /* Red color for the trash icon */
+    font-size: 1.5rem; /* Adjust the size of the icon */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .custom-remove-wishlist-btn:hover .custom-trash-icon {
+    color: #c82333; /* Darker red on hover */
+  }
+  
+  @media(max-width:600px){
+
+    .custom-remove-wishlist-btn{
+      margin-left: -500px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+  }

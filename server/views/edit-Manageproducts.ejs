@@ -1,0 +1,378 @@
+<%- include('components/navbar') %> <%- include('components/sidebar')%>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin panel</title>
+    
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #f7f9fc;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column; /* Use column direction */
+        align-items: center;
+        min-height: 100vh; /* Ensure the body takes up the full height */
+      }
+
+      .container {
+        background-color: #fff;
+        width: 70%;
+        margin-left: 22%;
+        margin-top: 8%;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px; /* Space between form and table */
+      }
+
+      .header {
+        background-color: #e1e8e6;
+        height: 90px; /* Set the height of the div */
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        border-radius: 5px;
+      }
+
+      .header h2 {
+        color: #121212;
+        font-size: 2rem;
+        margin-left: 20px;
+      }
+      .header button[type="submit"] {
+        padding: 12px 20px;
+        font-size: 1rem;
+        margin-left: 39em;
+        background-color: rgb(34, 24, 24);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .header button[type="submit"]:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      label {
+        font-size: 1rem;
+        color: #0a0909;
+        margin-bottom: 5px;
+      }
+
+      select,input[type="number"],
+      input[type="text"] {
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        transition: border 0.3s ease;
+      }
+
+      select:focus,input[type="number"]:focus,
+      input[type="text"]:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+
+      button[type="submit"] {
+        padding: 12px;
+        font-size: 1rem;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      p {
+        color: #2f9e10;
+        text-align: left;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      .image-gallery {
+        display: flex;
+        gap: 10px; /* Spacing between images */
+        flex-wrap: wrap; /* Allow images to wrap if the container is too narrow */
+        justify-content: flex-start;
+        margin-top: 15px;
+      }
+
+      .image-item {
+       border: 1px solid #ccc; /* Optional border around each image */
+       padding: 5px;
+       border-radius: 5px; /* Rounded corners for each image */
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for a 3D effect */
+       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .image-item img {
+        height: 100px; /* Set a fixed height for the images */
+        object-fit: cover; /* Crop the image to fit the container */
+        border-radius: 5px; /* Match the border radius of the container */
+        width: 100px; /* Set a fixed width for the images */
+      }
+
+     .image-item:hover {
+       transform: scale(1.05); /* Slightly enlarge the image on hover */
+       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increase the shadow on hover */
+      }
+
+
+      /* Responsive adjustments */
+      @media (max-width: 1024px) {
+        .container,
+        .table-container {
+          width: 80%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          width: 90%;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        button[type="submit"] {
+          font-size: 1rem;
+          padding: 10px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          width: 100%;
+        }
+
+        h2 {
+          font-size: 1.3rem;
+        }
+
+        input[type="text"],
+        button[type="submit"] {
+          font-size: 0.9rem;
+          padding: 8px;
+        }
+      }
+
+      /* Popup styles */
+     .popup {
+         position: fixed;
+         display: none; /* Hidden by default */
+         left: 0;
+         z-index: 9999;
+         width: 100%;
+         top: 0;
+         background-color: rgba(0, 0, 0, 0.8); /* Transparent background */
+         height: 100%;
+         align-items: center;
+         justify-content: center;
+       }
+
+     .popup-content {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain; /* Make sure image doesn't stretch */
+      }
+
+     .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+     font-size: 40px;
+     font-weight: bold;
+     cursor: pointer;
+    }
+
+    .popup .close:hover,
+    .popup .close:focus {
+    color: #bbb;
+   }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Edit Product</h2>
+        <button type="submit" onclick="window.location.href='/admin/Manage-products'">
+            Back
+          </button>
+      </div>
+
+      <% if (typeof message !== 'undefined') { %>
+      <p><%= message %></p>
+      <% } %>
+
+      <form action="/admin/edit-Manageproducts/<%= product._id %>" method="post" enctype="multipart/form-data">
+        <label for="category">Choose Category</label>
+        <select id="category" name="category" required>
+          <option value=""disabled selected>Choose a category</option>
+            <% categories.forEach(category => { %>
+              <option value="<%= category._id %>" 
+                <%= product.category && product.category._id.equals(category._id) ? 'selected' : '' %>>
+                <%= category.name %>
+              </option>
+            <% }) %>
+          </select>
+          
+
+        <label for="Subcategory">Choose Subcategory</label>
+        <select id="subcategory" name="subcategory" required>
+          <option value=""disabled selected>Choose a Subcategory</option>
+            <% subcategories.forEach(subcategory => { %>
+              <option value="<%= subcategory._id %>" 
+                <%= product.subcategory && product.subcategory._id.equals(subcategory._id) ? 'selected' : '' %>>
+                <%= subcategory.name %>
+              </option>
+            <% }) %>
+          </select>
+          
+
+        <label for="productname">Product Name</label>
+        <input  type="text" name="productname" id="productname" value="<%= product.productname %>" placeholder="Enter Product name" required />
+
+        <label for="productcompany">Product Company</label>
+        <input  type="text" name="productcompany" id="productcompany" value="<%= product.productcompany %>" placeholder="Enter Product Company" required />
+
+        <label for="productbeforediscount">Product Price Before Discount</label>
+        <input  type="number" name="productbeforediscount" id="productbeforediscount" value="<%= product.productbeforediscount %>" placeholder="Enter Product Price" required />
+
+        <label for="productafterdiscount">Product Price After Discount(Selling) </label>
+        <input  type="number" name="productafterdiscount" id="productafterdiscount" value="<%= product.productafterdiscount %>"  placeholder="Enter Product Price" required />
+         
+        <label for="productHighlight">Product Highlight </label>
+        <textarea name="productHighlight" id="productHighlight" placeholder="Enter Product Highlight" style="height: 200px;" required>
+          <%= product.productHighlight %> 
+        </textarea>
+
+        <label for="productDiscription">Product Description </label>
+        <textarea id="productDiscription" name="productDiscription" style="height: 200px;" required>
+            <%= product.productDiscription %>  
+          </textarea>
+
+        <label for="productshippingcharge">Product Shipping Charge</label>
+        <input  type="number" name="productshippingcharge" id="productshippingcharge" value="<%= product.productshippingcharge %>" placeholder="Enter Product Shipping Charge" required>
+         
+        <label for="productavailbility">Product Availbility</label>
+        <select id="productavailbility" name="productavailbility" required>
+          <option value="" disabled selected>Select Availability</option>
+            <option value="in-stock" <%= product.productavailbility === 'in-stock' ? 'selected' : '' %>>In Stock</option>
+            <option value="out-of-stock" <%= product.productavailbility === 'out-of-stock' ? 'selected' : '' %>>Out of Stock</option>
+          </select>
+
+          
+          <!-- Display Existing Images -->
+     
+      <div>
+        <label>Current Product Images:</label>
+        <div class="image-gallery">
+          <% if (product.productimages && product.productimages.length > 0) { %>
+            <% product.productimages.forEach((image, index) => { %>
+              <div class="image-item">
+                <img src="/uploads/<%= image %>" alt="Product Image <%= index + 1 %>" width="100" height="100" class="clickable-image" />
+              </div>
+            <% }) %>
+          <% } else { %>
+            <p>No images available.</p>
+          <% } %>
+        </div>
+      </div>
+      <!-- Popup container -->
+      <div id="image-popup" class="popup">
+      <span class="close">&times;</span>
+      <img class="popup-content" id="popup-img" />
+      </div>
+
+    <!-- Upload New Images -->
+    
+     <label for="productimage1">Upload New Product Image 1:</label>
+      <input type="file" name="productimage1" id="productimage1"  />
+
+      <label for="productimage2">Upload New Product Image 2:</label>
+      <input type="file" name="productimage2" id="productimage2" />
+
+      <label for="productimage3">Upload New Product Image 3:</label>
+      <input type="file" name="productimage3" id="productimage3"  />
+
+      <label for="productimage4">Upload New Product Image 4:</label>
+      <input type="file" name="productimage4" id="productimage4"  />
+
+      <label for="productimage5">Upload New Product Image 5:</label>
+      <input type="file" name="productimage5" id="productimage5"  />
+
+      <label for="productimage6">Upload New Product Image 6:</label>
+      <input type="file" name="productimage6" id="productimage6"  />
+
+
+
+        <button type="submit">Update Product</button>
+      </form>
+    </div>
+
+
+    <script>
+      // Get the popup element
+      const popup = document.getElementById('image-popup');
+      const popupImg = document.getElementById('popup-img');
+      const closeBtn = document.querySelector('.popup .close');
+    
+      // Get all images with the class 'clickable-image'
+      const images = document.querySelectorAll('.clickable-image');
+    
+      // Loop through each image and add click event
+      images.forEach(image => {
+        image.addEventListener('click', () => {
+          // Set the popup image to the clicked image's source
+          popupImg.src = image.src;
+          // Display the popup
+          popup.style.display = 'flex';
+        });
+      });
+    
+      // Close the popup when the close button is clicked
+      closeBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+      });
+    
+      // Close the popup if the user clicks anywhere outside the image
+      popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+          popup.style.display = 'none';
+        }
+      });
+    </script>
+    
+    
+  </body>
+</html>
+
+
+
+

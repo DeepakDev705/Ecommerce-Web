@@ -1,0 +1,67 @@
+.order-container {
+    margin-top: 100px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  .order-heading {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .order-message {
+    text-align: center;
+    color: #999;
+  }
+  
+  .order-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+    background-color: #fff;
+  }
+  
+  .order-product-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .order-product-image {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 30px;
+    margin-left: 50px;
+    object-fit: cover;
+  }
+  
+  .order-details {
+    max-width: 80%;
+    flex: 1;
+  }
+  .order-amount{
+    margin-top: -25px;
+  }
+  .order-status{
+    margin-top: -25px;
+  }
+  .order-Deleverystatus{
+    margin-left: 700px;
+    margin-top: -71px; 
+    display: flex;
+    justify-content: center;
+    width: 35%;
+  }
+  .dstatus-color{
+    width: 15px;
+    height: 15px;
+    margin-right: 2%;
+    margin-top: 4px;
+    border-radius: 50%;
+    background-color: green;
+  }

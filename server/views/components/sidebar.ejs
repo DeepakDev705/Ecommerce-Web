@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
+    <style>
+    /* sidebar */
+.sidebar {
+  background-color: #212529;
+  margin-top: 5%;
+  color: white;
+  padding: 20px;
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: left 0.3s ease;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  overflow: auto;
+}
+
+.sidebar li a {
+  display: block;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar li a:hover {
+  background-color: #a7b5c3;
+  color: black;
+}
+
+.sidebar li a .icon {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.sidebar li a .dropdown-icon {
+  float: right;
+  margin-left: 10px;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar li a:hover .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+/* Dropdown styles */
+.sidebar ul.dropdown {
+  display: none;
+  background-color: white;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.sidebar ul.dropdown li a {
+  padding: 10px 20px;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.sidebar ul.dropdown li a .order-icon {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.sidebar ul.dropdown li a .count {
+  background-color: #007bff;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+/* Sidebar toggle button for mobile */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 90%;
+  left: 10px;
+  z-index: 2;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.dropdown-toggle{
+  cursor: pointer;
+}
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .sidebar {
+    left: -250px; /* Hide sidebar */
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.open {
+    left: 0; /* Show sidebar when open */
+  }
+
+  .sidebar-toggle {
+    display: block; /* Show toggle button on mobile */
+  }
+}
+    </style> 
+
+</head>
+<body>
+    <!-- Sidebar toggle button (for mobile) -->
+    <div class="sidebar-toggle" onclick="toggleSidebar()">
+      <i class="material-icons">menu</i>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+      <ul>
+        <li>
+          <a href="/admin/Order-Management">
+            <i class="material-icons icon">settings</i>
+            Order Management
+          </a>
+        </li>
+        <li>
+          <a href="/admin/Manage-Users">
+            <i class="material-icons icon">people</i>
+            Manage Users
+          </a>
+        </li>
+        <li>
+          <a href="/create-category">
+            <i class="material-icons icon">category</i>
+            Create Category
+          </a>
+        </li>
+        <li>
+          <a href="/admin/Sub-category">
+            <i class="material-icons icon">layers</i>
+            Sub Category
+          </a>
+        </li>
+        <li>
+          <a href="/admin/Insert-Product">
+            <i class="material-icons icon">add_box</i>
+            Insert Product
+          </a>
+        </li>
+        <li>
+          <a href="/admin/Manage-products">
+            <i class="material-icons icon">grid_on</i>
+            Manage Products
+          </a>
+        </li>
+        <li>
+          <a href="/admin/Slidebar">
+            <i class="material-icons icon">menu</i>
+           Slidebar
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="material-icons icon">assignment_ind</i>
+            User Login Log
+          </a>
+        </li>
+        <li>
+          <a href="/admin">
+            <i class="material-icons icon">exit_to_app</i>
+            Logout
+          </a>
+        </li>
+      </ul>
+  </div>
+
+  <script>
+      // JavaScript function to toggle sidebar
+      function toggleSidebar() {
+          const sidebar = document.querySelector('.sidebar');
+          sidebar.classList.toggle('open');
+      }
+  </script>
+</body>
+</html>

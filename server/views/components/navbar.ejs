@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
+    <style>
+         .Navbar {
+        background-color:  rgb(34, 24, 24);
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 8% ;
+        width: 100%;
+        z-index: 10;
+      }
+
+      .Navbar h1 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+
+      .Navbar h1:first-of-type {
+        margin-left: 10%;
+      }
+
+      .Navbar h1:last-of-type {
+        margin-right: 18%;
+      }
+
+      /* Icon and Dropdown Menu Styles */
+      .icon-container {
+        position: relative;
+        margin-left: -75%;
+        margin-right: 8%;
+        cursor: pointer;
+      }
+
+      .material-icons {
+        font-size: 36px;
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background-color: white;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        min-width: 150px;
+        z-index: 99;
+      }
+
+      .dropdown-menu a {
+        display: block;
+        padding: 10px;
+        color: #333;
+        text-decoration: none;
+        font-size: 1rem;
+        border-bottom: 1px solid #eaeaea;
+      }
+
+      .dropdown-menu a:hover {
+        background-color: #f4f4f4;
+      }
+
+      .dropdown-menu a:last-child {
+        border-bottom: none;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .Navbar h1:first-of-type, .Navbar h1:last-of-type {
+          font-size: 1.2rem;
+          margin-left: 5%;
+          margin-right: 10%;
+        }
+
+        .icon-container {
+          margin-left: 0;
+          margin-right: 5%;
+        }
+
+        .material-icons {
+          font-size: 30px;
+        }
+
+        .dropdown-menu {
+          min-width: 120px;
+        }
+      }
+    </style>
+</head>
+<body>
+    <div class="Navbar">
+        <h1>Ecommerce | Admin</h1>
+        <h1>Admin</h1>
+        <div class="icon-container">
+          <i class="material-icons" id="dropdownToggle">account_circle</i>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <a href="/admin/change-password">Change Password</a>
+            <a href="/admin">Logout</a>
+          </div>
+        </div>
+    </div>
+
+    <script>
+      // Toggle dropdown menu visibility
+      const dropdownToggle = document.getElementById('dropdownToggle');
+      const dropdownMenu = document.getElementById('dropdownMenu');
+
+      dropdownToggle.addEventListener('click', function () {
+        if (dropdownMenu.style.display === 'block') {
+          dropdownMenu.style.display = 'none';
+        } else {
+          dropdownMenu.style.display = 'block';
+        }
+      });
+
+      // Close the dropdown if the user clicks outside of it
+      window.addEventListener('click', function (e) {
+        if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+          dropdownMenu.style.display = 'none';
+        }
+      });
+    </script>
+</body>
+</html>
